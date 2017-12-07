@@ -22,6 +22,7 @@ public class FlappyBird extends ApplicationAdapter {
 	Texture background;
 	Texture gameover;
 	//new batch for shape
+	//TODO: Uncomment to demo
     //ShapeRenderer shapeRenderer;
 	Texture[] birds;
 	//flip between bird 0 and bird 1
@@ -71,7 +72,10 @@ public class FlappyBird extends ApplicationAdapter {
 		background = new Texture("bg.png");
 		//gameover image
 		gameover = new Texture("flappybirdgameover.png");
+
+		//TODO: Uncomment to demo
 		//shapeRenderer = new ShapeRenderer();
+		
 		birdCircle = new Circle();
 		//font style for score
 		font = new BitmapFont();
@@ -208,6 +212,7 @@ public class FlappyBird extends ApplicationAdapter {
 				velocity = 0;
 			}
 		}
+		//Bird's wing flip beteen each other
 		if (flapState == 0) {
 			flapState = 1;
 		} else {
@@ -223,15 +228,19 @@ public class FlappyBird extends ApplicationAdapter {
 		batch.end();
 		//Circle will be overlapped of the bird image
 		birdCircle.set(Gdx.graphics.getWidth() / 2, birdY + birds[flapState].getHeight() / 2,  birds[flapState].getHeight() / 2);
+
+		//TODO: Uncomment to demo
+
 		/*shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
 		shapeRenderer.setColor(Color.RED);
 		shapeRenderer.circle(birdCircle.x, birdCircle.y, birdCircle.radius);*/
 
 		//Detect the collision
 		for (int i = 0; i < numberOfTubes; i++) {
-
+			//TODO: Uncomment to demo
 			/*shapeRenderer.rect(tubeX[i], Gdx.graphics.getHeight() / 2 + gap / 2 + tubeOffset[i], topTube.getWidth(), topTube.getHeight());
 			shapeRenderer.rect(tubeX[i], Gdx.graphics.getHeight() / 2 - gap / 2 - bottomTube.getHeight() + tubeOffset[i], topTube.getWidth(), topTube.getHeight());*/
+
             //check for the circle and rectangles intersection (if they hit each other or not)
 			if (Intersector.overlaps(birdCircle, topTubeRectangles[i]) || Intersector.overlaps(birdCircle, bottomTubeRectangles[i])) {
 				Gdx.app.log("Collision" , "Yes!" );
@@ -239,6 +248,8 @@ public class FlappyBird extends ApplicationAdapter {
 				gameState = 2;
 			}
 		}
+
+		//TODO: Uncomment to demo
 		//shapeRenderer.end();
 	}
 	
